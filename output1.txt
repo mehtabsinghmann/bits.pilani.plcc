@@ -1,0 +1,229 @@
+   1: main
+	1: reserved word : main
+   2: begin
+	2: reserved word : begin
+   3: int a;
+	3: reserved word : int
+	3: TK_ID,name=a
+	3: ;
+   4: int b;
+	4: reserved word : int
+	4: TK_ID,name=b
+	4: ;
+   5: int cm;
+	5: reserved word : int
+	5: TK_ID,name=cm
+	5: ;
+   6: int d;
+	6: reserved word : int
+	6: TK_ID,name=d
+	6: ;
+   7: a=7+3;
+	7: TK_ID,name=a
+	7: =
+	7: TK_NUM, value = 7
+	7: +
+	7: TK_NUM, value = 3
+	7: ;
+   8: b=3-4;
+	8: TK_ID,name=b
+	8: =
+	8: TK_NUM, value = 3
+	8: -
+	8: TK_NUM, value = 4
+	8: ;
+   9: get cm;
+	9: reserved word : get
+	9: TK_ID,name=cm
+	9: ;
+  10: get d;
+	10: reserved word : get
+	10: TK_ID,name=d
+	10: ;
+  11: if(a. > .d)
+	11: reserved word : if
+	11: (
+	11: TK_ID,name=a
+	11: .
+	11: >
+	11: .
+	11: TK_ID,name=d
+	11: )
+  12: begin
+	12: reserved word : begin
+  13: print a;
+	13: reserved word : print
+	13: TK_ID,name=a
+	13: ;
+  14: print d;
+	14: reserved word : print
+	14: TK_ID,name=d
+	14: ;
+  15: get d;
+	15: reserved word : get
+	15: TK_ID,name=d
+	15: ;
+  16: a=a*d;
+	16: TK_ID,name=a
+	16: =
+	16: TK_ID,name=a
+	16: *
+	16: TK_ID,name=d
+	16: ;
+  17: end
+	17: reserved word : end
+  18: print a;
+	18: reserved word : print
+	18: TK_ID,name=a
+	18: ;
+  19: print d;
+	19: reserved word : print
+	19: TK_ID,name=d
+	19: ;
+  20: print cm;
+	20: reserved word : print
+	20: TK_ID,name=cm
+	20: ;
+  21: end
+	21: reserved word : end
+	22: EOF
+
+			Syntax Tree : 
+Programs
+Functions	
+MainFun	OtherFuns	
+TK_KEY_MAIN ('main')	TK_KEY_BEGIN ('begin')	FunBody	TK_KEY_END ('end')	
+Declarations	OtherStatements	
+Declaration	Declarations	
+TK_KEY_INT ('int')	TK_ID ('a')	TK_SEMI (';')	
+Declaration	Declarations	
+TK_KEY_INT ('int')	TK_ID ('b')	TK_SEMI (';')	
+Declaration	Declarations	
+TK_KEY_INT ('int')	TK_ID ('cm')	TK_SEMI (';')	
+Declaration	Declarations	
+TK_KEY_INT ('int')	TK_ID ('d')	TK_SEMI (';')	
+Statement	OtherStatements	
+AssignmentStmt	
+TK_ID ('a')	TK_EQUAL ('=')	Expression	TK_SEMI (';')	
+Term	EPrime	
+Factor	TPrime	
+TK_NUM ('7')	
+TK_PLUS ('+')	Term	EPrime	
+Factor	TPrime	
+TK_NUM ('3')	
+Statement	OtherStatements	
+AssignmentStmt	
+TK_ID ('b')	TK_EQUAL ('=')	Expression	TK_SEMI (';')	
+Term	EPrime	
+Factor	TPrime	
+TK_NUM ('3')	
+TK_MINUS ('-')	Term	EPrime	
+Factor	TPrime	
+TK_NUM ('4')	
+Statement	OtherStatements	
+IO_Stmt	
+TK_KEY_GET ('get')	TK_ID ('cm')	TK_SEMI (';')	
+Statement	OtherStatements	
+IO_Stmt	
+TK_KEY_GET ('get')	TK_ID ('d')	TK_SEMI (';')	
+Statement	OtherStatements	
+ConditionalStmt	
+TK_KEY_IF ('if')	TK_OPEN ('(')	BoolExp	TK_CLOSE (')')	TK_KEY_BEGIN ('begin')	OtherStatements	TK_KEY_END ('end')	
+TK_ID ('a')	TK_DOT ('.')	BoolOps	TK_DOT ('.')	TK_ID ('d')	
+TK_GT ('>')	
+Statement	OtherStatements	
+IO_Stmt	
+TK_KEY_PRINT ('print')	TK_ID ('a')	TK_SEMI (';')	
+Statement	OtherStatements	
+IO_Stmt	
+TK_KEY_PRINT ('print')	TK_ID ('d')	TK_SEMI (';')	
+Statement	OtherStatements	
+IO_Stmt	
+TK_KEY_GET ('get')	TK_ID ('d')	TK_SEMI (';')	
+Statement	OtherStatements	
+AssignmentStmt	
+TK_ID ('a')	TK_EQUAL ('=')	Expression	TK_SEMI (';')	
+Term	EPrime	
+Factor	TPrime	
+TK_ID ('a')	
+TK_TIMES ('*')	Factor	TPrime	
+TK_ID ('d')	
+Statement	OtherStatements	
+IO_Stmt	
+TK_KEY_PRINT ('print')	TK_ID ('a')	TK_SEMI (';')	
+Statement	OtherStatements	
+IO_Stmt	
+TK_KEY_PRINT ('print')	TK_ID ('d')	TK_SEMI (';')	
+Statement	OtherStatements	
+IO_Stmt	
+TK_KEY_PRINT ('print')	TK_ID ('cm')	TK_SEMI (';')	
+
+		SYMBOL TABLE :
+
+Symbol Type : Variable	 Name : a	 Scope : main	DataType : INT	
+
+Symbol Type : Variable	 Name : b	 Scope : main	DataType : INT	
+
+Symbol Type : Variable	 Name : d	 Scope : main	DataType : INT	
+
+Symbol Type : Variable	 Name : cm	 Scope : main	DataType : INT	
+
+
+			 ABSTRACT SYNTAX TREE
+Program
+MainFun	
+Declaration	Declaration	Declaration	Declaration	Statement	Statement	Statement	Statement	Statement	Statement	Statement	Statement	
+IntVar	
+a	
+IntVar	
+b	
+IntVar	
+cm	
+IntVar	
+d	
+AssignmentStmt	
+a	Expr	
+PlusExpr	
+Expr	Expr	
+7	
+3	
+AssignmentStmt	
+b	Expr	
+MinusExpr	
+Expr	Expr	
+3	
+4	
+IOStmt	
+INStmt	
+cm	
+IOStmt	
+INStmt	
+d	
+ConditionalStmt	
+BoolExp	Statement	Statement	Statement	Statement	
+GTExp	
+a	d	
+IOStmt	
+OUTStmt	
+a	
+IOStmt	
+OUTStmt	
+d	
+IOStmt	
+INStmt	
+d	
+AssignmentStmt	
+a	Expr	
+TimesExpr	
+Expr	Expr	
+a	
+d	
+IOStmt	
+OUTStmt	
+a	
+IOStmt	
+OUTStmt	
+d	
+IOStmt	
+OUTStmt	
+cm	

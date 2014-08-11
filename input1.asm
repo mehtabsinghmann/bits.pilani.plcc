@@ -1,0 +1,236 @@
+.model small
+.data
+.stack
+a   dw ?
+b   dw ?
+cm   dw ?
+d   dw ?
+temp dw ?
+.code
+.startup
+MOV AX, 7
+PUSH AX
+POP AX
+MOV BX,AX
+PUSH BX
+MOV AX, 3
+PUSH AX
+POP AX
+POP BX
+ADD AX,BX
+PUSH AX
+POP AX
+MOV BX,Offset a
+MOV [BX],AX
+MOV AX, 3
+PUSH AX
+POP AX
+MOV BX,AX
+PUSH BX
+MOV AX, 4
+PUSH AX
+POP AX
+POP BX
+SUB BX,AX
+MOV AX,BX
+PUSH AX
+POP AX
+MOV BX,Offset b
+MOV [BX],AX
+MOV cm,0
+MOV CX,0
+label0:
+MOV AX,cm
+MOV BX,10
+IMUL BX
+MOV cm,AX
+ADD cm,CX
+MOV AH,1H
+INT 21h
+MOV AH,0
+MOV BX,13
+MOV CX,AX
+SUB CX,30H
+CMP AX,BX
+JNE label0
+
+MOV d,0
+MOV CX,0
+label1:
+MOV AX,d
+MOV BX,10
+IMUL BX
+MOV d,AX
+ADD d,CX
+MOV AH,1H
+INT 21h
+MOV AH,0
+MOV BX,13
+MOV CX,AX
+SUB CX,30H
+CMP AX,BX
+JNE label1
+
+MOV AX,a
+MOV BX,d
+CMP AX,BX
+JLE label2
+MOV BX,Offset a
+MOV CX,[BX]
+MOV AX,[BX]
+AND DX,0
+MOV temp,0
+label3:
+MOV BX,10
+CWD
+IDIV BX
+MOV CX,AX
+AND DH,0
+ADD DL,30H
+PUSH DX
+ADD temp,1
+MOV BX,0
+MOV AX,CX
+CMP CX,BX
+JNE label3
+label4:
+POP DX
+MOV AH,2H
+INT 21H
+SUB temp,1
+CMP temp,BX
+ JNE label4 
+MOV BX,Offset d
+MOV CX,[BX]
+MOV AX,[BX]
+AND DX,0
+MOV temp,0
+label5:
+MOV BX,10
+CWD
+IDIV BX
+MOV CX,AX
+AND DH,0
+ADD DL,30H
+PUSH DX
+ADD temp,1
+MOV BX,0
+MOV AX,CX
+CMP CX,BX
+JNE label5
+label6:
+POP DX
+MOV AH,2H
+INT 21H
+SUB temp,1
+CMP temp,BX
+ JNE label6 
+MOV d,0
+MOV CX,0
+label7:
+MOV AX,d
+MOV BX,10
+IMUL BX
+MOV d,AX
+ADD d,CX
+MOV AH,1H
+INT 21h
+MOV AH,0
+MOV BX,13
+MOV CX,AX
+SUB CX,30H
+CMP AX,BX
+JNE label7
+
+MOV AX, a
+PUSH AX
+POP AX
+MOV BX,AX
+PUSH BX
+MOV AX, d
+PUSH AX
+POP AX
+POP BX
+IMUL BX
+PUSH AX
+POP AX
+MOV BX,Offset a
+MOV [BX],AX
+label2 :
+MOV BX,Offset a
+MOV CX,[BX]
+MOV AX,[BX]
+AND DX,0
+MOV temp,0
+label8:
+MOV BX,10
+CWD
+IDIV BX
+MOV CX,AX
+AND DH,0
+ADD DL,30H
+PUSH DX
+ADD temp,1
+MOV BX,0
+MOV AX,CX
+CMP CX,BX
+JNE label8
+label9:
+POP DX
+MOV AH,2H
+INT 21H
+SUB temp,1
+CMP temp,BX
+ JNE label9 
+MOV BX,Offset d
+MOV CX,[BX]
+MOV AX,[BX]
+AND DX,0
+MOV temp,0
+label10:
+MOV BX,10
+CWD
+IDIV BX
+MOV CX,AX
+AND DH,0
+ADD DL,30H
+PUSH DX
+ADD temp,1
+MOV BX,0
+MOV AX,CX
+CMP CX,BX
+JNE label10
+label11:
+POP DX
+MOV AH,2H
+INT 21H
+SUB temp,1
+CMP temp,BX
+ JNE label11 
+MOV BX,Offset cm
+MOV CX,[BX]
+MOV AX,[BX]
+AND DX,0
+MOV temp,0
+label12:
+MOV BX,10
+CWD
+IDIV BX
+MOV CX,AX
+AND DH,0
+ADD DL,30H
+PUSH DX
+ADD temp,1
+MOV BX,0
+MOV AX,CX
+CMP CX,BX
+JNE label12
+label13:
+POP DX
+MOV AH,2H
+INT 21H
+SUB temp,1
+CMP temp,BX
+ JNE label13 
+.EXIT
+END

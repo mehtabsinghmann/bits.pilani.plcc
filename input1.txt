@@ -1,0 +1,21 @@
+main
+begin
+int a;
+int b;
+int cm;
+int d;
+a=7+3;
+b=3-4;
+get cm;
+get d;
+if(a. > .d)
+begin
+print a;
+print d;
+get d;
+a=a*d;
+end
+print a;
+print d;
+print cm;
+end

@@ -1,0 +1,290 @@
+   1: main 
+	1: reserved word : main
+   2: begin 
+	2: reserved word : begin
+   3: 	int a;
+	3: reserved word : int
+	3: TK_ID,name=a
+	3: ;
+   4: 	int b;
+	4: reserved word : int
+	4: TK_ID,name=b
+	4: ;
+   5: 	int d;
+	5: reserved word : int
+	5: TK_ID,name=d
+	5: ;
+   6: 	get a;
+	6: reserved word : get
+	6: TK_ID,name=a
+	6: ;
+   7: 	get b;
+	7: reserved word : get
+	7: TK_ID,name=b
+	7: ;
+   8: 	get d;
+	8: reserved word : get
+	8: TK_ID,name=d
+	8: ;
+   9: 	print a;
+	9: reserved word : print
+	9: TK_ID,name=a
+	9: ;
+  10: 	print b;
+	10: reserved word : print
+	10: TK_ID,name=b
+	10: ;
+  11: 	print d;
+	11: reserved word : print
+	11: TK_ID,name=d
+	11: ;
+  12: 	if(a.>=.b)
+	12: reserved word : if
+	12: (
+	12: TK_ID,name=a
+	12: .
+	12: >=
+	12: .
+	12: TK_ID,name=b
+	12: )
+  13: 	begin
+	13: reserved word : begin
+  14: 	a = a + 1;
+	14: TK_ID,name=a
+	14: =
+	14: TK_ID,name=a
+	14: +
+	14: TK_NUM, value = 1
+	14: ;
+  15: 	b = b + a;
+	15: TK_ID,name=b
+	15: =
+	15: TK_ID,name=b
+	15: +
+	15: TK_ID,name=a
+	15: ;
+  16: 	print a;
+	16: reserved word : print
+	16: TK_ID,name=a
+	16: ;
+  17: 	print b;
+	17: reserved word : print
+	17: TK_ID,name=b
+	17: ;
+  18: 	print d;
+	18: reserved word : print
+	18: TK_ID,name=d
+	18: ;
+  19: 	end
+	19: reserved word : end
+  20: 	d = a*3+b-8+16/4;
+	20: TK_ID,name=d
+	20: =
+	20: TK_ID,name=a
+	20: *
+	20: TK_NUM, value = 3
+	20: +
+	20: TK_ID,name=b
+	20: -
+	20: TK_NUM, value = 8
+	20: +
+	20: TK_NUM, value = 16
+	20: /
+	20: TK_NUM, value = 4
+	20: ;
+  21: 	print a;
+	21: reserved word : print
+	21: TK_ID,name=a
+	21: ;
+  22: 	print b;
+	22: reserved word : print
+	22: TK_ID,name=b
+	22: ;
+  23: 	print d;
+	23: reserved word : print
+	23: TK_ID,name=d
+	23: ;
+  24: end
+	24: reserved word : end
+	25: EOF
+
+			Syntax Tree : 
+Programs
+Functions	
+MainFun	OtherFuns	
+TK_KEY_MAIN ('main')	TK_KEY_BEGIN ('begin')	FunBody	TK_KEY_END ('end')	
+Declarations	OtherStatements	
+Declaration	Declarations	
+TK_KEY_INT ('int')	TK_ID ('a')	TK_SEMI (';')	
+Declaration	Declarations	
+TK_KEY_INT ('int')	TK_ID ('b')	TK_SEMI (';')	
+Declaration	Declarations	
+TK_KEY_INT ('int')	TK_ID ('d')	TK_SEMI (';')	
+Statement	OtherStatements	
+IO_Stmt	
+TK_KEY_GET ('get')	TK_ID ('a')	TK_SEMI (';')	
+Statement	OtherStatements	
+IO_Stmt	
+TK_KEY_GET ('get')	TK_ID ('b')	TK_SEMI (';')	
+Statement	OtherStatements	
+IO_Stmt	
+TK_KEY_GET ('get')	TK_ID ('d')	TK_SEMI (';')	
+Statement	OtherStatements	
+IO_Stmt	
+TK_KEY_PRINT ('print')	TK_ID ('a')	TK_SEMI (';')	
+Statement	OtherStatements	
+IO_Stmt	
+TK_KEY_PRINT ('print')	TK_ID ('b')	TK_SEMI (';')	
+Statement	OtherStatements	
+IO_Stmt	
+TK_KEY_PRINT ('print')	TK_ID ('d')	TK_SEMI (';')	
+Statement	OtherStatements	
+ConditionalStmt	
+TK_KEY_IF ('if')	TK_OPEN ('(')	BoolExp	TK_CLOSE (')')	TK_KEY_BEGIN ('begin')	OtherStatements	TK_KEY_END ('end')	
+TK_ID ('a')	TK_DOT ('.')	BoolOps	TK_DOT ('.')	TK_ID ('b')	
+TK_GEQ ('>=')	
+Statement	OtherStatements	
+AssignmentStmt	
+TK_ID ('a')	TK_EQUAL ('=')	Expression	TK_SEMI (';')	
+Term	EPrime	
+Factor	TPrime	
+TK_ID ('a')	
+TK_PLUS ('+')	Term	EPrime	
+Factor	TPrime	
+TK_NUM ('1')	
+Statement	OtherStatements	
+AssignmentStmt	
+TK_ID ('b')	TK_EQUAL ('=')	Expression	TK_SEMI (';')	
+Term	EPrime	
+Factor	TPrime	
+TK_ID ('b')	
+TK_PLUS ('+')	Term	EPrime	
+Factor	TPrime	
+TK_ID ('a')	
+Statement	OtherStatements	
+IO_Stmt	
+TK_KEY_PRINT ('print')	TK_ID ('a')	TK_SEMI (';')	
+Statement	OtherStatements	
+IO_Stmt	
+TK_KEY_PRINT ('print')	TK_ID ('b')	TK_SEMI (';')	
+Statement	OtherStatements	
+IO_Stmt	
+TK_KEY_PRINT ('print')	TK_ID ('d')	TK_SEMI (';')	
+Statement	OtherStatements	
+AssignmentStmt	
+TK_ID ('d')	TK_EQUAL ('=')	Expression	TK_SEMI (';')	
+Term	EPrime	
+Factor	TPrime	
+TK_ID ('a')	
+TK_TIMES ('*')	Factor	TPrime	
+TK_NUM ('3')	
+TK_PLUS ('+')	Term	EPrime	
+Factor	TPrime	
+TK_ID ('b')	
+TK_MINUS ('-')	Term	EPrime	
+Factor	TPrime	
+TK_NUM ('8')	
+TK_PLUS ('+')	Term	EPrime	
+Factor	TPrime	
+TK_NUM ('16')	
+TK_DIV ('/')	Factor	TPrime	
+TK_NUM ('4')	
+Statement	OtherStatements	
+IO_Stmt	
+TK_KEY_PRINT ('print')	TK_ID ('a')	TK_SEMI (';')	
+Statement	OtherStatements	
+IO_Stmt	
+TK_KEY_PRINT ('print')	TK_ID ('b')	TK_SEMI (';')	
+Statement	OtherStatements	
+IO_Stmt	
+TK_KEY_PRINT ('print')	TK_ID ('d')	TK_SEMI (';')	
+
+		SYMBOL TABLE :
+
+Symbol Type : Variable	 Name : a	 Scope : main	DataType : INT	
+
+Symbol Type : Variable	 Name : b	 Scope : main	DataType : INT	
+
+Symbol Type : Variable	 Name : d	 Scope : main	DataType : INT	
+
+
+			 ABSTRACT SYNTAX TREE
+Program
+MainFun	
+Declaration	Declaration	Declaration	Statement	Statement	Statement	Statement	Statement	Statement	Statement	Statement	Statement	Statement	Statement	
+IntVar	
+a	
+IntVar	
+b	
+IntVar	
+d	
+IOStmt	
+INStmt	
+a	
+IOStmt	
+INStmt	
+b	
+IOStmt	
+INStmt	
+d	
+IOStmt	
+OUTStmt	
+a	
+IOStmt	
+OUTStmt	
+b	
+IOStmt	
+OUTStmt	
+d	
+ConditionalStmt	
+BoolExp	Statement	Statement	Statement	Statement	Statement	
+GEExp	
+a	b	
+AssignmentStmt	
+a	Expr	
+PlusExpr	
+Expr	Expr	
+a	
+1	
+AssignmentStmt	
+b	Expr	
+PlusExpr	
+Expr	Expr	
+b	
+a	
+IOStmt	
+OUTStmt	
+a	
+IOStmt	
+OUTStmt	
+b	
+IOStmt	
+OUTStmt	
+d	
+AssignmentStmt	
+d	Expr	
+PlusExpr	
+Expr	Expr	
+TimesExpr	
+Expr	Expr	
+a	
+3	
+MinusExpr	
+Expr	Expr	
+b	
+PlusExpr	
+Expr	Expr	
+8	
+DivExpr	
+Expr	Expr	
+16	
+4	
+IOStmt	
+OUTStmt	
+a	
+IOStmt	
+OUTStmt	
+b	
+IOStmt	
+OUTStmt	
+d	

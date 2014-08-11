@@ -1,0 +1,44 @@
+Assignment 3
+
+Group Members :
+Mehtab Singh Mann - 2007A7PS125P
+Ankur Garg - 2007A7PS110P
+
+Following are the files for Assignment 1(with brief description):-
+
+1. globals.h -- Contains the definition of all global variables and data structures.
+2. util.h -- Contains the prototypes of the functions used for creating new nodes,printing tokens and printing the syntax tree.
+3. util.c -- Contains the implementation of the functions prototyped in util.h .
+4. scan.h -- Contains the prototype of the function used for getting the next token. It also contains the definition of the tokenString variable.
+5. scan.c -- Contains the implementation of the getToken function.
+6. parse.h -- Contains the prototype of parse function.
+7. parse.c -- Contains the implementation of the parse function according to the given grammar.
+8. main.c -- Contains the initialization of scanner and the parser.
+9. symtab.h -- Header file for symtab.c
+10. symtab.c -- Contains the symbol table lookup and checking functions 
+11. ast.h -- Header file for ast.c
+12. ast.c -- Contains the implemetation of Abstract Tree Generation
+13. cgen.h -- Header file for cgen.c
+14. cgen.c -- Contains the implementation of x86 code generation.
+Compilation and Executing:-
+
+>> gcc main.c util.c scan.c parse.c symtab.c ast.c cgen.c
+
+>> ./a.out <<source_filename>>
+
+>> cat output.txt  
+
+>> cat <<source_filename>>.asm
+
+Alternative:-
+>> make
+>> ./exe <<source_filename>>
+
+Test Cases:-
+
+Input file -- input.txt
+Output file -- output.txt , input.asm
+
+Input file -- input1.txt
+Output file -- output1.txt, input1.asm
+
