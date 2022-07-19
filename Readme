@@ -1,11 +1,4 @@
-Assignment 3
-
-Group Members :
-Mehtab Singh Mann - 2007A7PS125P
-Ankur Garg - 2007A7PS110P
-
-Following are the files for Assignment 1(with brief description):-
-
+Key Files and Usages:
 1. globals.h -- Contains the definition of all global variables and data structures.
 2. util.h -- Contains the prototypes of the functions used for creating new nodes,printing tokens and printing the syntax tree.
 3. util.c -- Contains the implementation of the functions prototyped in util.h .
@@ -20,6 +13,7 @@ Following are the files for Assignment 1(with brief description):-
 12. ast.c -- Contains the implemetation of Abstract Tree Generation
 13. cgen.h -- Header file for cgen.c
 14. cgen.c -- Contains the implementation of x86 code generation.
+
 Compilation and Executing:-
 
 >> gcc main.c util.c scan.c parse.c symtab.c ast.c cgen.c
